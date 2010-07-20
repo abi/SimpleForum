@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+  {% block head %}
+  <title>Home</title>
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+    <div class="span-20 last" id="post-idea">
+      <h1><a id="share-solution-link" href="/new"> Share your solution.</a></h1>
+    </div>
+    <div class="span-11">
+      <h2 class="span-8 last">Recent Solutions</h2>
+      
+      {% for solution in solutions reversed %}
+        <div class="solution">
+        <h3><a href="/solution?key={{solution.key}}" class="solution-title">{{solution.title}}</a></h3>
+        <span>
+          <span class="solution-name">{{solution.name}}</span> <span style="color:#999" class="solution-time">
+          shared {{solution.submittime|timesince }} ago</span>
+        </span>
+        <span>
+          <a href="/solution?key={{solution.key}}" class="solution-comments-link"> view comments</a>
+        </span>
+        </div>
+      {% endfor %}
+      
+      
+    </div>
+    
+    <div class="prepend-2 span-11 last">
+      <h2>Active Solutions</h2>
+      
+      {% for solution in solutions %}
+        <div class="solution">
+        <h3><a href="/solution?key={{solution.key}}" class="solution-title">{{solution.title}}</a></h3>
+        <span>
+          <span class="solution-name">{{solution.name}}</span> <span style="color:#999" class="solution-time">
+          shared {{solution.submittime|timesince }} ago</span>
+        </span>
+        <span>
+          <a href="/solution?key={{solution.key}}" class="solution-comments-link"> view comments</a>
+        </span>
+        </div>
+      {% endfor %}
+      
+    </div>
+    
+  {% endblock %}

@@ -1,0 +1,17 @@
+application: feedforwardsg
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /images
+  static_dir: images
+
+- url: .*
+  script: main.py

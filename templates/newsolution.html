@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+  {% block head %}
+  <title>Home</title>
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+  <div class="span-24 last">
+    <form action="/new" method="post" accept-charset="utf-8">
+      <fieldset>
+      <legend>What is your solution?</legend>
+      <dl>
+        <dt><label for="title">Title</label></dt>
+        <dd><input type="text" name="title" value="" id="title"></dd>
+        <dt><label for="problem">Problem</label></dt>
+        <dd>
+          <textarea cols="40" rows="10" id="problem" name="problem"></textarea>
+          <span class="form-help">Describe your problem in detail here. Be specific.
+            
+            <br/><br/>
+             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+           
+             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></dd>
+        <dt><label for="problem">Solution</label></dt>
+        <dd><textarea cols="40" rows="10" id="solution" name="solution"></textarea></dd>
+      </dl>
+      </fieldset>
+      
+      <fieldset>
+      <legend>Who are you?</legend>
+      <dl>
+        <dt><label for="name">Name</label></dt>
+        <dd><input type="text" name="name" value="" id="name"></dd>
+        <dt style="text-align:center;margin-top:50px"><input style="font-size:36px" type="submit" value="Let's fix this damned problem." /></dt>
+      </dl>
+      </fieldset>
+    </form>
+  </div>
+    
+  {% endblock %}

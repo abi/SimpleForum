@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+  {% block head %}
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="/css/solution.css" />
+  
+  {% endblock %}
+  
+  {% block content %}
+    
+    <div class="span-14 last">
+    
+    <h2 id="solution-title">{{solution.title}}</h2>
+    <div class="solution-info solution-header"><span class="solution-name">shared by {{solution.name}}</span> on <span class="solution-time">{{ solution.submittime|date:"d M"}}</span></div>
+    
+    <h3 class="solution-header">Problem</h3>
+    <p class="solution-text-section">
+    {{solution.problem|escape|urlize|linebreaks}}
+    </p>
+    
+    <h3 class="solution-header">Solution</h3>
+    <p class="solution-text-section">
+      {{solution.solution|escape|urlize|linebreaks}}
+    </p>
+    </div>
+    
+    <div class="span-14 last">
+    <h4 class="comments-header">Comments</h4>
+    </div>
+    
+    <div class="span-14">
+    {% for comment in comments reversed %}
+    <div class="comment span-14">
+      <div class="span-4 comment-name">{{comment.name}}</div> 
+      <div class="span-10 last comment-details"> {{comment.details|escape|urlize|linebreaks}}</div>
+    </div>
+    {% endfor %}
+    
+    <div class="span-14">
+     <form action="/comment" method="post" accept-charset="utf-8">
+        <fieldset>
+        <legend>What do you think?</legend>
+        <dl>
+          <dd>
+            <textarea cols="40" rows="5" id="details" name="details"></textarea>
+            <!-- <span class="form-help">Some rules for comments</span> -->
+          </dd>
+          <dt><label for="name">Name</label></dt>
+          <dd><input type="text" name="name" value="" id="name"></dd>
+          <!-- <dt><label for="details">Comment</label></dt> -->
+                <input type="hidden" name="solutionid" value="{{solution.key}}" id="solutionid">
+          <dt><input type="submit" value="Add your voice." /></dt>
+        </dl>
+        </fieldset>
+      </form>
+    </div>
+    </div>
+    
+    
+  {% endblock %}
